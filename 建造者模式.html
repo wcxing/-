@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>建造者模式</title>
+</head>
+<body>
+<script>
+    // 建造者模式现实生活中的模型
+    // 白富美 =》 包工头 =》 建筑工人
+    function Fangzi() {
+        this.woshi = ''
+        this.keting = ''
+        this.chufang = ''
+    }
+
+    function Baogongtou() {
+        this.gaifangzi = function (gongren) {
+            gongren.jian_woshi()
+            gongren.jian_keting()
+            gongren.jian_chufang()
+        }
+    }
+
+    function Gongren() {
+        this.jian_woshi = function() {
+            console.log('卧室建好了')
+        }
+        this.jian_keting = function() {
+            console.log('客厅建好了')
+        }
+        this.jian_chufang = function() {
+            console.log('厨房建好了')
+        }
+        this.jiaogong = function() {
+            var _fangzi = new Fangzi()
+            return _fangzi
+        }
+    }
+
+    var gongren = new Gongren()
+
+    var baogongtou = new Baogongtou()
+
+    baogongtou.gaifangzi(gongren)
+
+
+    console.log(xinfangzi)
+
+</script>
+</body>
+</html>

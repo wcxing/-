@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单例模式</title>
+</head>
+<body>
+<button onclick="mySingleton.getInstance().getRandomNumber()">打招呼</button>
+<script>
+
+    var mySingleton = (function () {
+    //    实例保持了 singleton 的一个引用
+        var instance
+        function init () {
+            // 私有方法和变量
+            function privateMethod() {
+                console.log('i am private')
+            }
+            var privateVariable = 'i am also private'
+            var privateRandomNumber = Math.random()
+            return {
+            //   公有方法和变量
+                publicMethod: function () {
+                    console.log('the public can see me!')
+                },
+                publicProperty: 'i am public property',
+                getRandomNumber: function () {
+                    console.log(privateRandomNumber)
+                    return privateRandomNumber
+                }
+            }
+        }
+        return {
+            getInstance: function () {
+                console.log(instance)
+                if (!instance){
+                    instance = init()
+                }
+                return instance
+            }
+        }
+    })()
+
+
+</script>
+</body>
+</html>
